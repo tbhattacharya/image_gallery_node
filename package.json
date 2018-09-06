@@ -1,0 +1,25 @@
+{
+  "name": "image_gallery_node",
+  "version": "1.0.0",
+  "description": "A webservice for Flickr",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "test",
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tbhattacharya/image_gallery_node.git"
+  },
+  "author": "tbhattacharya",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tbhattacharya/image_gallery_node/issues"
+  },
+  "homepage": "https://github.com/tbhattacharya/image_gallery_node#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "request": "^2.88.0"
+  }
+}
