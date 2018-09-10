@@ -5,6 +5,12 @@ const service = require('./service');
 const port = 8000;
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+
 /**
  * Create the route/method for fetching gallery information
  */

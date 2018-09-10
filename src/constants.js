@@ -1,9 +1,10 @@
 module.exports = {
     BASEURL: 'https://api.flickr.com/services/rest',
     REQ_VALUES: {
-        METHOD: 'flickr.galleries.getPhotos',
-        API_KEY: '39289096ddf5e480830e31c0224562fd',
-        FORMAT: 'json'
+        METHOD_GALLERY: 'flickr.galleries.getPhotos',
+        API_KEY: '3d16348181e8da69a143d1d74f1848d7',
+        FORMAT: 'json',
+        METHOD_PROFILE: 'flickr.profile.getProfile'
     },
     ErrorRespose: {
         'status': 'FAILURE'
