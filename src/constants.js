@@ -4,7 +4,8 @@ module.exports = {
         METHOD_GALLERY: 'flickr.galleries.getPhotos',
         API_KEY: '3d16348181e8da69a143d1d74f1848d7',
         FORMAT: 'json',
-        METHOD_PROFILE: 'flickr.profile.getProfile'
+        METHOD_PROFILE: 'flickr.profile.getProfile',
+        METHOD_PHOTO: 'flickr.photos.getInfo'
     },
     ErrorRespose: {
         'status': 'FAILURE'

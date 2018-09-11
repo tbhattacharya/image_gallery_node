@@ -26,6 +26,13 @@ const profileQs = {
     nojsoncallback: 1
 }
 
+const photoQs = {
+    method: Constants.REQ_VALUES.METHOD_PHOTO,
+    api_key: Constants.REQ_VALUES.API_KEY,
+    format: Constants.REQ_VALUES.FORMAT,
+    nojsoncallback: 1
+}
+
 module.exports = {
     getGalleryInfo: (req, res) => {
         //Recontruct the query string using constants defined and gallery_id from req
@@ -47,20 +54,40 @@ module.exports = {
                 const resp = JSON.parse(body);
                 request({
                     ...options,
-                    qs:{
+                    qs: {
                         ...profileQs,
                         user_id: resp.gallery.owner
                     }
                 },
-                (error, response, body) => {
-                    if (error) {
-                        //return error with status 'FAILURE' for front end
-                        return res.send({ ...Constants.ErrorRespose, error });
+                    (error, response, body) => {
+                        if (error) {
+                            //return error with status 'FAILURE' for front end
+                            return res.send({ ...Constants.ErrorRespose, error });
+                        }
+                        resp.gallery.owner_name = JSON.parse(body).profile.first_name + ' ' + JSON.parse(body).profile.last_name
+                        res.send({ ...Constants.SuccessResponse, data: resp });
                     }
-                    resp.gallery.owner_name = JSON.parse(body).profile.first_name + ' ' + JSON.parse(body).profile.last_name
-                    res.send({ ...Constants.SuccessResponse, data:resp });
+                )
+            });
+    },
+    getPhotoInfo: (req, res) => {
+        //Recontruct the query string using constants defined and gallery_id from req
+        request(
+            {
+                ...options,
+                qs: {
+                    ...photoQs,
+                    photo_id: req.query.photo_id,
+                    secret: req.query.secret
                 }
-            )
+            },
+            (error, response, body) => {
+                if (error) {
+                    //return error with status 'FAILURE' for front end
+                    return res.send({ ...Constants.ErrorRespose, error });
+                }
+                //return data with status 'SUCCESS' for front end
+                res.send({ ...Constants.SuccessResponse, data: JSON.parse(body) });
             });
     }
 };
